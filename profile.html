@@ -9,9 +9,12 @@
   <style>
     .profileImg {
       width: 200px;
+      height: 200px;
+      object-fit: cover;
       border-radius: 50%;
       display: block;
       margin: 20px auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     .profileInfo {
       text-align: center;
@@ -31,18 +34,36 @@
     .links a:hover {
       text-decoration: underline;
     }
+    .contact {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .formContainer {
+      max-width: 400px;
+      margin: 40px auto 0;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    .formContainer label,
+    .formContainer input,
+    .formContainer button {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
     <h1>My Profile</h1>
-    <img src="https://i.pinimg.com/736x/bb/e0/ff/bbe0fff2ea140bdb2b820fdb1c5224d1.jpg" alt="Hello Kitty style chalk art" class="profileImg">
+    <img src="https://i.namu.wiki/i/LUo37uoJKpKd7aoWaSyotxApYij73tQnsNk5mI4nPl4R6_lMaeqZqhhf6FPzt-V0b6b_4wquuYhrXhlfiKY9FQ.gif" alt="Hello Kitty GIF" class="profileImg">
     
     <div class="profileInfo">
       <h2>Lee Eun🐰</h2>
       <p>산업디자인학과 전공, 서울여자대학교</p>
-      <p>Hello! I'm currently studying planning, design, and coding.  
+      <p>Hello! I'm currently studying planning, design, and coding.<br>
         As a product design student, I'm learning and growing every day through projects and real-world practice.</p>
     </div>
 
