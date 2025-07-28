@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2silver0711 포트폴리오</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Apple SD Gothic Neo', sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* 왼쪽 프로필 영역 */
+    .sidebar {
+      width: 300px;
+      background-color: #fff;
+      padding: 30px 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .sidebar img.profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      margin-bottom: 10px;
+    }
+
+    .sidebar h2 {
+      font-size: 20px;
+      margin: 10px 0 4px;
+    }
+
+    .sidebar .role {
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .edit-btn {
+      margin: 10px 0;
+      background: black;
+      color: white;
+      padding: 6px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .contact {
+      margin-top: 20px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .contact a {
+      color: #3366cc;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* 오른쪽 콘텐츠 영역 */
+    .main-content {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .card {
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- 사이드 프로필 -->
+    <div class="sidebar">
+      <img class="profile-img" src="https://boatcraft.co.kr/data/file/005_01_01_01/c2b97582a1bfba1f6eba7e821f815c95.gif" alt="프로필 이미지">
+      <h2>2silver0711</h2>
+      <div class="role">UX/UI Designer Product Designer</div>
+      <button class="edit-btn">Edit profile</button>
+
+      <div class="contact">
+        <p>📧 <a href="mailto:peu20816@gmail.com">peu20816@gmail.com</a></p>
+        <p>📞 010-4533-1620</p>
+        <p>🔗 <a href="https://www.behance.net/peu111189e7f" target="_blank">Behance</a></p>
+        <p>🔗 <a href="https://notefolio.net/undefined/410762" target="_blank">Notefolio</a></p>
+      </div>
+    </div>
+
+    <!-- 오른쪽 콘텐츠 -->
+    <div class="main-content">
+      <div class="section">
+        <div class="section-title">프로젝트</div>
+        <div class="card-grid">
+          <div class="card"><img src="https://img.insight.co.kr/static/2019/12/20/700/naher0o59zbzk96r4uhp.jpg" alt="프로젝트1"></div>
+          <div class="card"><img src="https://img.insight.co.kr/static/2019/12/20/700/naher0o59zbzk96r4uhp.jpg" alt="프로젝트2"></div>
+          <div class="card"><img src="https://img.insight.co.kr/static/2019/12/20/700/naher0o59zbzk96r4uhp.jpg" alt="프로젝트3"></div>
+          <div class="card"><img src="https://img.insight.co.kr/static/2019/12/20/700/naher0o59zbzk96r4uhp.jpg" alt="프로젝트4"></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">무드보드</div>
+        <div class="card-grid">
+          <div class="card"><img src="https://photo.coolenjoy.co.kr/data/editor/2103/5fba2a079f1d5beaf7fc382c3c7f2348f393cd53.gif" alt="무드1"></div>
+          <div class="card"><img src="https://photo.coolenjoy.co.kr/data/editor/2103/5fba2a079f1d5beaf7fc382c3c7f2348f393cd53.gif" alt="무드2"></div>
+          <div class="card"><img src="https://photo.coolenjoy.co.kr/data/editor/2103/5fba2a079f1d5beaf7fc382c3c7f2348f393cd53.gif" alt="무드3"></div>
+          <div class="card"><img src="https://photo.coolenjoy.co.kr/data/editor/2103/5fba2a079f1d5beaf7fc382c3c7f2348f393cd53.gif" alt="무드4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
