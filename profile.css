@@ -1,0 +1,127 @@
+@font-face {
+  font-family: 'Apple SD Gothic Neo';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Apple SD Gothic Neo'), local('AppleSDGothicNeo-Regular');
+}
+
+body {
+  font-family: 'Apple SD Gothic Neo', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.profileImg {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.profileInfo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profileInfo h2 {
+  font-size: 1.8rem;
+  margin: 10px 0;
+}
+
+.profileInfo p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 5px 0;
+}
+
+.links {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.links a {
+  display: inline-block;
+  margin: 5px 10px;
+  text-decoration: none;
+  color: #3366cc;
+  font-weight: bold;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.contact {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 1rem;
+}
+
+.contact a {
+  color: #444;
+  text-decoration: none;
+  display: block;
+  margin: 4px 0;
+}
+
+.formContainer {
+  max-width: 400px;
+  margin: 40px auto 0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.formContainer h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.formContainer label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.formContainer input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.formContainer button {
+  width: 100%;
+  padding: 10px;
+  background-color: #3366cc;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.formContainer button:hover {
+  background-color: #254a9b;
+}
