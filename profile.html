@@ -16,35 +16,39 @@
       width: 1920px;
       height: 1080px;
       background: #f4f4f2;
-      padding: 60px 80px;
+      padding: 60px 90px;
     }
 
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-    }
-
-    .left-header {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .left-header h1 {
-      font-size: 36px;
-      font-weight: 700;
       margin-bottom: 20px;
     }
 
-    .left-header .back {
+    .left-header h1 {
+      font-size: 40px;
+      font-weight: 700;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 15px 0;
+    }
+
+    .back {
       font-size: 24px;
       margin-bottom: 10px;
     }
 
-    .left-header .name {
+    .name {
       font-size: 20px;
       font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .right-header {
@@ -61,26 +65,44 @@
       object-fit: cover;
     }
 
-    .content {
-      display: grid;
-      grid-template-columns: 400px 1fr 1fr;
-      grid-gap: 15px;
+    .main-content {
+      display: flex;
+      gap: 60px;
     }
 
     .profile-image {
-      width: 400px;
-      height: 535px;
-      border-radius: 30px;
-      background: url('profile.jpg') no-repeat center/cover;
+      width: 530px;
+      height: 690px;
+      border-radius: 50px;
+      background: url('https://i.pinimg.com/736x/30/29/2e/30292e69eea3c36f029ea031db47771b.jpg') lightgray -2px -17.017px / 100.377% 105.328% no-repeat;
+      flex-shrink: 0;
     }
 
-    .card {
-      width: 400px;
-      height: 289px;
+    .info-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .row-cards {
+      display: flex;
+      gap: 35px;
+    }
+
+    .intro-card, .portfolio-card {
+      width: 800px;
+      height: 290px;
       border-radius: 20px;
-      background-color: #ddd;
       overflow: hidden;
       position: relative;
+    }
+
+    .intro-card {
+      background: url('https://i.pinimg.com/736x/30/29/2e/30292e69eea3c36f029ea031db47771b.jpg') no-repeat center/cover;
+    }
+
+    .portfolio-card {
+      background: url('https://i.pinimg.com/736x/30/29/2e/30292e69eea3c36f029ea031db47771b.jpg') no-repeat center/cover;
     }
 
     .card.plus::after {
@@ -108,27 +130,59 @@
     .section-row {
       display: flex;
       gap: 15px;
+      margin-top: 40px;
     }
 
     .contact, .tools {
       display: flex;
-      gap: 15px;
+      gap: 25px;
     }
 
-    .contact .card, .tools .card {
-      width: 180px;
-      height: 100px;
+    .contact .card {
+      width: 250px;
+      height: 180px;
       border-radius: 16px;
-      background: #eee;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 14px;
       text-align: center;
+      flex-direction: column;
+      padding: 10px;
+      color: #fff;
     }
 
-    .section {
-      margin-top: 40px;
+    .contact .card:nth-child(1) { background: #000; }
+    .contact .card:nth-child(2) { background: #0057ff; }
+    .contact .card:nth-child(3) { background: #d6d6d6; color: #000; }
+
+    .tools .tool-card {
+      width: 250px;
+      height: 180px;
+      border-radius: 16px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .tools .tool-card img {
+      width: 80px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .contact .card:hover,
+    .tool-card:hover {
+      transform: translateY(-5px);
+      transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
   </style>
 </head>
@@ -136,50 +190,57 @@
   <header>
     <div class="left-header">
       <h1>Profile</h1>
-      <div class="back">←</div>
-      <div class="name">박이은 <span style="font-weight: normal;">Park lee eun</span></div>
     </div>
-    <div class="right-header">
-      <div>🤍 Today</div>
-      <div class="avatars">
-        <img src="avatar1.jpg" />
-        <img src="avatar2.jpg" />
-        <img src="avatar3.jpg" />
+    <hr />
+    <div class="header-flex">
+      <div>
+        <div class="back">←</div>
+        <div class="name">박이은 <span style="font-weight: normal;">Park lee eun</span></div>
+      </div>
+      <div class="right-header">
+        <div>🤍 Today</div>
+        <div class="avatars">
+          <img src="https://i.pinimg.com/736x/30/29/2e/30292e69eea3c36f029ea031db47771b.jpg" />
+          <img src="https://i.pinimg.com/736x/30/29/2e/30292e69eea3c36f029ea031db47771b.jpg" />
+          <img src="https://i.pinimg.com/736x/30/29/2e/30292e69eea3c36f029ea031db47771b.jpg" />
+        </div>
       </div>
     </div>
+    <hr />
   </header>
 
-  <div class="content">
+  <div class="main-content">
     <div class="profile-image"></div>
 
-    <div>
-      <h2>Introduction</h2>
-      <div class="card plus"></div>
-    </div>
-
-    <div>
-      <h2>Portfolio</h2>
-      <div class="card" style="background: url('project.jpg') no-repeat center/cover;"></div>
+    <div class="info-section">
+      <div class="row-cards">
+        <div>
+          <h2>Introduction</h2>
+          <div class="intro-card card plus"></div>
+        </div>
+        <div>
+          <h2>Portfolio</h2>
+          <div class="portfolio-card"></div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="section">
-    <div class="section-row">
-      <div style="flex: 1;">
-        <h2>Get In Touch</h2>
-        <div class="contact">
-          <div class="card">Telegram<br/>010-4533-1620</div>
-          <div class="card">Behance<br/>https://behance.net/...</div>
-          <div class="card">Instagram<br/>@2eun2silver</div>
-        </div>
+  <div class="section-row">
+    <div style="flex: 1;">
+      <h2>Get In Touch</h2>
+      <div class="contact">
+        <div class="card">Mobile: 010-4533-1620<br />peix2018@gmail.com</div>
+        <div class="card"><a href="https://behance.net/" target="_blank">Behance<br/>https://behance.net/...</a></div>
+        <div class="card"><a href="https://instagram.com/2eun2silver" target="_blank">Instagram<br/>@2eun2silver</a></div>
       </div>
-      <div style="flex: 1;">
-        <h2>Design Tool</h2>
-        <div class="tools">
-          <div class="card">Figma</div>
-          <div class="card">KeyShot</div>
-          <div class="card">Photoshop</div>
-        </div>
+    </div>
+    <div style="flex: 1;">
+      <h2>Design Tool</h2>
+      <div class="tools">
+        <div class="tool-card"><img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma" /></div>
+        <div class="tool-card"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Photoshop" /></div>
+        <div class="tool-card"><img src="https://www.plusplastic.com/images/Solution/KeyShot.jpg" alt="KeyShot" /></div>
       </div>
     </div>
   </div>
