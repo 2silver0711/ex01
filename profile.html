@@ -1,99 +1,187 @@
 <!DOCTYPE html>
-<html lang="ko">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>프로필 기본</title>
-  <link rel="stylesheet" href="/ex/css/profile.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile</title>
   <style>
-    .profileImg {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 50%;
-      display: block;
-      margin: 20px auto;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
     }
-    .profileInfo {
-      text-align: center;
+
+    body {
+      width: 1920px;
+      height: 1080px;
+      background: #f4f4f2;
+      padding: 60px 80px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .left-header {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .left-header h1 {
+      font-size: 36px;
+      font-weight: 700;
       margin-bottom: 20px;
     }
-    .links {
-      text-align: center;
-      margin-top: 10px;
+
+    .left-header .back {
+      font-size: 24px;
+      margin-bottom: 10px;
     }
-    .links a {
-      display: inline-block;
-      margin: 5px 10px;
-      text-decoration: none;
-      color: #3366cc;
+
+    .left-header .name {
+      font-size: 20px;
       font-weight: bold;
     }
-    .links a:hover {
-      text-decoration: underline;
+
+    .right-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 18px;
     }
-    .contact {
+
+    .right-header .avatars img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 400px 1fr 1fr;
+      grid-gap: 15px;
+    }
+
+    .profile-image {
+      width: 400px;
+      height: 535px;
+      border-radius: 30px;
+      background: url('profile.jpg') no-repeat center/cover;
+    }
+
+    .card {
+      width: 400px;
+      height: 289px;
+      border-radius: 20px;
+      background-color: #ddd;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card.plus::after {
+      content: '+';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 48px;
+      background: #ffffffcc;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h2 {
+      margin: 30px 0 15px;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .section-row {
+      display: flex;
+      gap: 15px;
+    }
+
+    .contact, .tools {
+      display: flex;
+      gap: 15px;
+    }
+
+    .contact .card, .tools .card {
+      width: 180px;
+      height: 100px;
+      border-radius: 16px;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
       text-align: center;
-      margin-top: 20px;
     }
-    .formContainer {
-      max-width: 400px;
-      margin: 40px auto 0;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-    }
-    .formContainer label,
-    .formContainer input,
-    .formContainer button {
-      display: block;
-      width: 100%;
-      margin-bottom: 10px;
+
+    .section {
+      margin-top: 40px;
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
-    <h1>My Profile</h1>
-    <img src="https://i.namu.wiki/i/LUo37uoJKpKd7aoWaSyotxApYij73tQnsNk5mI4nPl4R6_lMaeqZqhhf6FPzt-V0b6b_4wquuYhrXhlfiKY9FQ.gif" alt="Hello Kitty GIF" class="profileImg">
-    
-    <div class="profileInfo">
-      <h2>Lee Eun🐰</h2>
-      <p>산업디자인학과 전공, 서울여자대학교</p>
-      <p>Hello! I'm currently studying planning, design, and coding.<br>
-        As a product design student, I'm learning and growing every day through projects and real-world practice.</p>
+  <header>
+    <div class="left-header">
+      <h1>Profile</h1>
+      <div class="back">←</div>
+      <div class="name">박이은 <span style="font-weight: normal;">Park lee eun</span></div>
+    </div>
+    <div class="right-header">
+      <div>🤍 Today</div>
+      <div class="avatars">
+        <img src="avatar1.jpg" />
+        <img src="avatar2.jpg" />
+        <img src="avatar3.jpg" />
+      </div>
+    </div>
+  </header>
+
+  <div class="content">
+    <div class="profile-image"></div>
+
+    <div>
+      <h2>Introduction</h2>
+      <div class="card plus"></div>
     </div>
 
-    <div class="links">
-      <a href="https://notefolio.net/undefined/410762" target="_blank">Notefolio Portfolio</a>
-      <a href="https://www.behance.net/peu111189e7f" target="_blank">Behance Portfolio</a>
+    <div>
+      <h2>Portfolio</h2>
+      <div class="card" style="background: url('project.jpg') no-repeat center/cover;"></div>
     </div>
-    
-    <div class="contact">
-      <p>Contact me at:</p>
-      <a href="mailto:peu20816@gmail.com">peu20816@gmail.com</a><br>
-      <a href="tel:+821045331620">+82 10-4533-1620</a>
-    </div>
-    
-    <div class="formContainer">
-      <h3>Contact Me</h3>
-      <form action="/" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+  </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="message">Message:</label>
-        <input type="text" id="message" name="message" required>
-
-        <button type="button">Submit</button>
-      </form>
+  <div class="section">
+    <div class="section-row">
+      <div style="flex: 1;">
+        <h2>Get In Touch</h2>
+        <div class="contact">
+          <div class="card">Telegram<br/>010-4533-1620</div>
+          <div class="card">Behance<br/>https://behance.net/...</div>
+          <div class="card">Instagram<br/>@2eun2silver</div>
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <h2>Design Tool</h2>
+        <div class="tools">
+          <div class="card">Figma</div>
+          <div class="card">KeyShot</div>
+          <div class="card">Photoshop</div>
+        </div>
+      </div>
     </div>
   </div>
 </body>
-
 </html>
