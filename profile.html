@@ -2,6 +2,19 @@
 <html lang="en">
 
 <head>
+  <script>
+  let toggled = false;
+
+  function changeProfileImage() {
+    const profile = document.querySelector('.profile-image');
+    if (!toggled) {
+      profile.style.background = "url('https://i.pinimg.com/1200x/24/a2/d2/24a2d20100c3426828a27b49ef0e8715.jpg') center/cover no-repeat";
+    } else {
+      profile.style.background = "url('https://i.pinimg.com/1200x/15/94/f6/1594f64e7ff1a3323863f3c7f7901516.jpg') center/cover no-repeat";
+    }
+    toggled = !toggled;
+  }
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Profile</title>
@@ -35,7 +48,7 @@
   </header>
 
   <div class="main-content">
-    <div class="profile-image"></div>
+    <div class="profile-image" onclick="changeProfileImage()"></div>
     <div>
       <div class="info-section">
         <div class="row-cards">

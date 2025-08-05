@@ -69,8 +69,10 @@ hr {
     width: 530px;
     height: 690px;
     border-radius: 50px;
-    background: url('https://i.pinimg.com/1200x/15/94/f6/1594f64e7ff1a3323863f3c7f7901516.jpg') lightgray -2px -17.017px / 100.377% 105.328% no-repeat;
+    background: url('https://i.pinimg.com/1200x/15/94/f6/1594f64e7ff1a3323863f3c7f7901516.jpg') center/cover no-repeat;
     flex-shrink: 0;
+    transition: background 0.5s ease-in-out;
+    cursor: pointer;
 }
 
 .info-section {
