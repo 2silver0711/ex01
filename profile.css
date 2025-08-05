@@ -90,7 +90,7 @@ hr {
 .portfolio-card {
     width: 800px;
     height: 290px;
-    border-radius: 30px;
+    border-radius: 25px;
     overflow: hidden;
     position: relative;
 }
@@ -140,7 +140,7 @@ h2 {
 .contact .card {
     width: 250px;
     height: 180px;
-    border-radius: 30px;
+    border-radius: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -167,7 +167,7 @@ h2 {
 .tools .tool-card {
     width: 250px;
     height: 180px;
-    border-radius: 30px;
+    border-radius: 25px;
     background: #fff;
     display: flex;
     align-items: center;
