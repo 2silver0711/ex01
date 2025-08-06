@@ -26,8 +26,17 @@ body {
   object-fit: cover;
   display: block;
 }
+.galleryItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  /* 여기에 transition 추가해줘야 함! */
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
 .galleryItem img:hover {
   transform: scale(1.05);
-  transition: transform 0.3s ease;
   filter: brightness(1.1);
 }
