@@ -87,3 +87,12 @@ function updateCart() {
   // 💰 총 금액 표시
   totalDisplay.textContent = total.toLocaleString(); // 예: 8500 → "8,500"
 }
+
+// 전체 비우기 버튼
+const clearBtn = document.querySelector("#clearCart");
+clearBtn.addEventListener("click", () => {
+  if (confirm("정말로 장바구니를 비우시겠습니까?")) {
+    for (const name in cart) delete cart[name];
+    updateCart();
+  }
+});

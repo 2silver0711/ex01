@@ -89,6 +89,28 @@
     span {
       font-weight: bold;
     }
+
+    @media (max-width: 600px) {
+  #menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  button.menu-button {
+    width: 80%;
+    max-width: 250px;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .controls {
+    justify-content: flex-end;
+    width: 100%;
+  }
+}
   </style>
 </head>
 <body>
@@ -115,6 +137,8 @@
   <div id="cart"></div>
 
   <p>총 합계: <span id="total">0</span>원</p>
+
+  <button id="clearCart">🗑️ 전체 비우기</button>
 
   <script src="js/kiosk.js"></script>
 </body>
