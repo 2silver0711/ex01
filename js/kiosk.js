@@ -128,8 +128,8 @@ document.getElementById("checkout").addEventListener("click", () => {
   // 2. 주문 정보 localStorage 저장
   localStorage.setItem("order", JSON.stringify(cart));
 
-  // 3. 1초 후 receipt.html로 이동
+  // 3. 2초 후 receipt.html로 이동
   setTimeout(() => {
     window.location.href = "receipt.html";
-  }, 1000);
+  }, 2000);
 });
