@@ -115,3 +115,16 @@ closeModal.addEventListener("click", () => {
   for (const name in cart) delete cart[name];
   updateCart();
 });
+
+document.getElementById("checkout").addEventListener("click", () => {
+  if (Object.keys(cart).length === 0) {
+    alert("장바구니가 비어 있습니다!");
+    return;
+  }
+
+  // 주문 데이터를 localStorage에 저장
+  localStorage.setItem("order", JSON.stringify(cart));
+
+  // 결제 페이지로 이동
+  window.location.href = "receipt.html";
+});
