@@ -6,7 +6,7 @@ const menu = document.querySelector("#menu");          // 메뉴 버튼들을 �
 const cartDisplay = document.querySelector("#cart");   // 장바구니 보여줄 영역
 const totalDisplay = document.querySelector("#total"); // 총 금액 보여줄 영역
 
-// ✅ 메뉴 버튼 클릭 시 실행될 함수
+//  메뉴 버튼 클릭 시 실행될 함수
 menu.addEventListener("click", (event) => {
   // 사용자가 클릭한 요소(button이 아닐 수도 있음)를 button까지 끌어올림
   const button = event.target.closest("button");
