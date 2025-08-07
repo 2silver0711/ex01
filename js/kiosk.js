@@ -122,9 +122,14 @@ document.getElementById("checkout").addEventListener("click", () => {
     return;
   }
 
-  // 주문 데이터를 localStorage에 저장
+  // 1. 모달 보여주기
+  document.getElementById("modal").classList.remove("hidden");
+
+  // 2. 주문 정보 localStorage 저장
   localStorage.setItem("order", JSON.stringify(cart));
 
-  // 결제 페이지로 이동
-  window.location.href = "receipt.html";
+  // 3. 1초 후 receipt.html로 이동
+  setTimeout(() => {
+    window.location.href = "receipt.html";
+  }, 1000);
 });
