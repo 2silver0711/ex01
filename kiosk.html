@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🍔 BurgerLee Shop 키오스크 🍔</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    #menu {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    button.menu-button {
+      width: 140px;
+      height: 180px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .menu-button img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    #cart {
+      margin: 0 auto 20px;
+      max-width: 400px;
+      text-align: left;
+    }
+
+    .cart-item {
+      background: #fff;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-info {
+      flex: 1;
+    }
+
+    .controls {
+      display: flex;
+      gap: 5px;
+    }
+
+    .controls button {
+      padding: 5px 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      background-color: #ddd;
+      cursor: pointer;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    span {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍔 BurgerLee Shop 키오스크 🍔</h1>
+
+  <div id="menu">
+    <button class="menu-button" data-name="햄버거" data-price="5000">
+      <img src="/image/burger.png" alt="햄버거" />
+      햄버거<br>(5,000원)
+    </button>
+
+    <button class="menu-button" data-name="감자튀김" data-price="2000">
+      <img src="/image/fries.png" alt="감자튀김" />
+      감자튀김<br>(2,000원)
+    </button>
+
+    <button class="menu-button" data-name="콜라" data-price="1500">
+      <img src="/image/coke.png" alt="콜라" />
+      콜라<br>(1,500원)
+    </button>
+  </div>
+
+  <h2>🛒 장바구니</h2>
+  <div id="cart"></div>
+
+  <p>총 합계: <span id="total">0</span>원</p>
+
+  <script src="/js/kiosk.js"></script>
+</body>
+</html>
