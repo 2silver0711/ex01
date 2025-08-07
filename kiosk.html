@@ -111,6 +111,24 @@
     width: 100%;
   }
 }
+
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+.hidden {
+  display: none;
+}
   </style>
 </head>
 <body>
@@ -139,6 +157,14 @@
   <p>총 합계: <span id="total">0</span>원</p>
 
   <button id="clearCart">🗑️ 전체 비우기</button>
+
+  <button id="checkout">✅ 결제하기</button>
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <p>🍔 주문이 완료되었습니다! 감사합니다.</p>
+    <button id="closeModal">닫기</button>
+  </div>
+</div>
 
   <script src="js/kiosk.js"></script>
 </body>

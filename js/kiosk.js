@@ -96,3 +96,22 @@ clearBtn.addEventListener("click", () => {
     updateCart();
   }
 });
+
+const checkoutBtn = document.querySelector("#checkout");
+const modal = document.querySelector("#modal");
+const closeModal = document.querySelector("#closeModal");
+
+checkoutBtn.addEventListener("click", () => {
+  if (Object.keys(cart).length === 0) {
+    alert("장바구니가 비어 있습니다!");
+    return;
+  }
+  modal.classList.remove("hidden");
+});
+
+closeModal.addEventListener("click", () => {
+  modal.classList.add("hidden");
+  // 장바구니 비우기
+  for (const name in cart) delete cart[name];
+  updateCart();
+});
