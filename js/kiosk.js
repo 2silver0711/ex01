@@ -130,7 +130,7 @@ document.getElementById("checkout").addEventListener("click", () => {
 
   // 3. 2초 후 receipt.html로 이동
   setTimeout(() => {
-    window.location.href = "/ex01/html/receipt.html ";
+    window.location.href = "/ex01/html/receipt.html";
   }, 2000);
 });
 
