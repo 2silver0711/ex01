@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🍔 Burger Shop 🍔</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    #menu {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    button.menu-button {
+      width: 150px;
+      height: 180px;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .menu-button img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    #cart {
+      margin: 0 auto 20px;
+      max-width: 400px;
+      text-align: left;
+    }
+
+    .cart-item {
+      background: #fff;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-info {
+      flex: 1;
+    }
+
+    .controls {
+      display: flex;
+      gap: 5px;
+    }
+
+    .controls button {
+      padding: 5px 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      background-color: #ddd;
+      cursor: pointer;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    span {
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      #menu {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      button.menu-button {
+        width: 80%;
+        max-width: 250px;
+      }
+
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .controls {
+        justify-content: flex-end;
+        width: 100%;
+      }
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .menu-button {
+      cursor: url("image/burger-cursor-final-32x32.png") 16 16, pointer;
+    }
+
+    #tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    #tabs button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #fff;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .menu-category {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🍔 Burger Shop 🍔</h1>
+
+  <!-- 📌 탭 버튼들 추가 (버거, 사이드, 음료, 디저트) -->
+  <div id="tabs">
+    <button onclick="showCategory('burger')">🍔 버거</button>
+    <button onclick="showCategory('side')">🍟 사이드</button>
+    <button onclick="showCategory('drink')">🥤 음료</button>
+    <button onclick="showCategory('dessert')">🍰 디저트</button>
+  </div>
+
+  <div id="menu">
+    <!-- 🍔 버거 카테고리 -->
+    <div class="menu-category" data-category="burger">
+      <button class="menu-button" data-name="치듀폭탄버거🍔" data-price="5000">
+        <img src="image/burger.png" alt="치듀폭탄버거" />
+        치듀폭탄버거🍔<br>5,000원
+      </button>
+      <button class="menu-button" data-name="불불고기버거🔥" data-price="5500">
+        <img src="image/burger.png" alt="불불고기버거" />
+        불불고기버거🔥<br>5,500원
+      </button>
+      <button class="menu-button" data-name="베이컨치즈버거🥓" data-price="6000">
+        <img src="image/burger.png" alt="베이컨치즈버거" />
+        베이컨치즈버거🥓<br>6,000원
+      </button>
+    </div>
+
+    <!-- 🍟 사이드 카테고리 -->
+    <div class="menu-category" data-category="side">
+      <button class="menu-button" data-name="바삭한~감튀🍟" data-price="2000">
+        <img src="image/fries.png" alt="감자튀김" />
+        바삭한~감튀🍟<br>2,000원
+      </button>
+      <button class="menu-button" data-name="치킨너겟🐔" data-price="2500">
+        <img src="image/fries.png" alt="치킨너겟🐔" />
+        치킨너겟🐔<br>2,500원
+      </button>
+      <button class="menu-button" data-name="양념감자🧂" data-price="2300">
+        <img src="image/fries.png" alt="양념감자🧂" />
+        양념감자🧂<br>2,300원
+      </button>
+    </div>
+
+    <!-- 🥤 음료 카테고리 -->
+    <div class="menu-category" data-category="drink">
+      <button class="menu-button" data-name="앗차거!콜라🥤" data-price="1500">
+        <img src="image/coke.png" alt="콜라" />
+        앗차거!콜라🥤<br>1,500원
+      </button>
+      <button class="menu-button" data-name="레몬에이드🍋" data-price="1800">
+        <img src="image/coke.png" alt="에이드" />
+        레몬에이드🍋<br>1,800원
+      </button>
+      <button class="menu-button" data-name="아메리카노☕️" data-price="2000">
+        <img src="image/coke.png" alt="아메리카노" />
+        아메리카노☕️<br>2,000원
+      </button>
+    </div>
+
+    <!-- 🍰 디저트 카테고리 (예시용, 빈칸 가능) -->
+    <div class="menu-category" data-category="dessert">
+      <p>디저트 준비중!</p>
+    </div>
+  </div>
+
+  <h2>🛒 장바구니</h2>
+  <div id="cart"></div>
+
+  <p>총 합계: <span id="total">0</span>원</p>
+
+  <button id="clearCart">🗑️ 전체 비우기</button>
+
+  <button id="checkout">✅ 결제하기</button>
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <p>🍔 주문이 완료되었습니다! 감사합니다.</p>
+      <button id="closeModal">닫기</button>
+    </div>
+  </div>
+  <script>
+    function showCategory(category) {
+      const all = document.querySelectorAll(".menu-category");
+      all.forEach(c => c.style.display = "none");
+
+      const target = document.querySelector(`[data-category="${category}"]`);
+      if (target) target.style.display = "flex";
+    }
+
+    // 페이지 처음 들어오면 버거 메뉴 먼저 보이게
+    window.onload = () => {
+      showCategory('burger');
+    };
+  </script>
+  <script src="/js/kiosk.js"></script>
+</body>
+
+</html>
