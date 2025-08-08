@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>🍔 BBurger Shop 🍔</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #444444;
+    }
+
+    header {
+      background-color: #ffe66c;
+      color: rgb(0, 0, 0);
+      padding: 1rem;
+      text-align: center;
+      font-size: 2.5rem;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 3rem 0;
+    }
+
+    .tabs button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .menu-section {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .menu-section.active {
+      display: flex;
+    }
+
+    .menu-button {
+      width: 140px;
+      height: 160px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      background-color: white;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .menu-button span {
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    .cart {
+      max-width: 600px;
+      margin: auto;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin: 0.5rem 0;
+    }
+
+    .controls button {
+      margin: 0 0.5rem;
+    }
+
+    .footer {
+      text-align: center;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>🍔 BBurger Shop 🍔</header>
+  <div class="tabs">
+    <button onclick="showCategory('burger')">🍔 버거</button>
+    <button onclick="showCategory('side')">🍟 사이드</button>
+    <button onclick="showCategory('drink')">🥤 음료</button>
+    <button onclick="showCategory('dessert')">🧁 디저트</button>
+  </div>
+
+  <div id="menu">
+    <div id="burger" class="menu-section active">
+      <button class="menu-button" data-name="치즈폭탄버거🍔" data-price="5000"> <img src="/ex01/image/burger.png" alt="치즈폭탄버거"
+          style="width: 80px; height: 80px; margin-top: 10px;"><br />치즈폭탄버거🍔<br /><span>5,000원</span></button>
+
+      <button class="menu-button" data-name="불불고기버거🔥" data-price="5500"> <img src="/ex01/image/burger-2.png"
+          alt="불불고기버거"
+          style="width: 80px; height: 80px; margin-top: 10px;"><br />불불고기버거🔥<br /><span>5,500원</span></button>
+      <button class="menu-button" data-name="베이컨치즈버거🥓" data-price="5800"> <img src="/ex01/image/cheeseburger.png"
+          alt="베이컨치즈버거"
+          style="width: 80px; height: 80px; margin-top: 10px;"><br />베이컨치즈버거🥓<br /><span>5,800원</span></button>
+    </div>
+    <div id="side" class="menu-section">
+      <button class="menu-button" data-name="감자튀김🍟" data-price="2000">감자튀김🍟<br /><span>2,000원</span></button>
+      <button class="menu-button" data-name="치킨너겟🐔" data-price="2800">치킨너겟🐔<br /><span>2,800원</span></button>
+      <button class="menu-button" data-name="닭다리2조각🍗" data-price="3000">닭다리2조각🍗<br /><span>3,000원</span></button>
+    </div>
+    <div id="drink" class="menu-section">
+      <button class="menu-button" data-name="콜라🥤" data-price="1500">콜라🥤<br /><span>1,500원</span></button>
+      <button class="menu-button" data-name="레몬에이드🍋" data-price="1800">레몬에이드🍋<br /><span>1,800원</span></button>
+      <button class="menu-button" data-name="아메리카노☕️" data-price="87500">코바<br /><span>87,500원</span></button>
+    </div>
+    <div id="dessert" class="menu-section">
+      <button class="menu-button" data-name="컵케이크🧁" data-price="3000">컵케이크🧁<br /><span>3,000원</span></button>
+    </div>
+  </div>
+
+  <div class="cart">
+    <h2>🛒 장바구니</h2>
+    <div id="cart"></div>
+    <div class="footer">
+      <div id="total">총 합계: 0원</div>
+      <button onclick="clearCart()">⛔ 전체삭제</button>
+      <button onclick="checkout()">✅ 결제하기</button>
+    </div>
+  </div>
+
+  <script src="/ex01/js/kiosk-v2.js"></script>
+</body>
+
+</html>

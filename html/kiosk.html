@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -34,6 +33,7 @@
       align-items: center;
       justify-content: center;
       font-size: 16px;
+      cursor: url("image/burger-cursor-final-32x32.png") 16 16, pointer;
     }
 
     .menu-button img {
@@ -137,10 +137,6 @@
       display: none;
     }
 
-    .menu-button {
-      cursor: url("image/burger-cursor-final-32x32.png") 16 16, pointer;
-    }
-
     #tabs {
       display: flex;
       justify-content: center;
@@ -175,24 +171,22 @@
 <body>
   <h1>🍔 Burger Shop 🍔</h1>
 
-  <!-- 📌 탭 버튼들 추가 (버거, 사이드, 음료, 디저트) -->
   <div id="tabs">
-    <button onclick="showCategory('burger')">🍔 버거</button>
-    <button onclick="showCategory('side')">🍟 사이드</button>
-    <button onclick="showCategory('drink')">🥤 음료</button>
-    <button onclick="showCategory('dessert')">🍰 디저트</button>
+    <button data-category="burger">🍔 버거</button>
+    <button data-category="side">🍟 사이드</button>
+    <button data-category="drink">🥤 음료</button>
+    <button data-category="dessert">🍰 디저트</button>
   </div>
 
   <div id="menu">
-    <!-- 🍔 버거 카테고리 -->
     <div class="menu-category" data-category="burger">
       <button class="menu-button" data-name="치듀폭탄버거🍔" data-price="5000">
         <img src="/ex01/image/burger.png" alt="치듀폭탄버거" />
         치듀폭탄버거🍔<br>5,000원
       </button>
-      <button class="menu-button" data-name="불불고기버거🔥" data-price="5500">
-        <img src="/ex01/image/-2.png" alt="불불고기버거" />
-        불불고기버거🔥<br>5,500원
+      <button class="menu-button" data-name="불불고기패티🔥" data-price="3500">
+        <img src="/ex01/image/burger-2.png" alt="불불고기패티" />
+        불불고기패티🔥<br>3,500원
       </button>
       <button class="menu-button" data-name="베이컨치즈버거🥓" data-price="6000">
         <img src="/ex01/image/cheeseburger.png" alt="베이컨치즈버거" />
@@ -200,30 +194,28 @@
       </button>
     </div>
 
-    <!-- 🍟 사이드 카테고리 -->
     <div class="menu-category" data-category="side">
       <button class="menu-button" data-name="바삭한~감튀🍟" data-price="2000">
         <img src="../image/fries.png" alt="감자튀김" />
         바삭한~감튀🍟<br>2,000원
       </button>
       <button class="menu-button" data-name="치킨너겟🐔" data-price="2500">
-        <img src="/ex01/image/nuggets.png" alt="치킨너겟🐔" />
+        <img src="/ex01/image/nuggets.png" alt="치킨너겟" />
         치킨너겟🐔<br>2,500원
       </button>
       <button class="menu-button" data-name="닭다리2조각🍗" data-price="2900">
-        <img src="/ex01/image/fried-chicken.png" alt="닭다리2조각🍗" />
+        <img src="/ex01/image/fried-chicken.png" alt="닭다리2조각" />
         닭다리2조각🍗<br>2,900원
       </button>
     </div>
 
-    <!-- 🥤 음료 카테고리 -->
     <div class="menu-category" data-category="drink">
       <button class="menu-button" data-name="앗차거!콜라🥤" data-price="1500">
         <img src="/ex01/image/coke.png" alt="콜라" />
         앗차거!콜라🥤<br>1,500원
       </button>
       <button class="menu-button" data-name="레몬에이드🍋" data-price="1800">
-        <img src="/ex01/image/soft-drink.png" alt="에이드" />
+        <img src="/ex01/image/soft-drink.png" alt="레몬에이드" />
         레몬에이드🍋<br>1,800원
       </button>
       <button class="menu-button" data-name="아메리카노☕️" data-price="2000">
@@ -232,7 +224,6 @@
       </button>
     </div>
 
-    <!-- 🍰 디저트 카테고리 (예시용, 빈칸 가능) -->
     <div class="menu-category" data-category="dessert">
       <p>디저트 준비중!</p>
     </div>
@@ -244,29 +235,120 @@
   <p>총 합계: <span id="total">0</span>원</p>
 
   <button id="clearCart">🗑️ 전체 비우기</button>
-
   <button id="checkout">✅ 결제하기</button>
+
   <div id="modal" class="modal hidden">
     <div class="modal-content">
       <p>🍔 주문이 완료되었습니다! 감사합니다.</p>
       <button id="closeModal">닫기</button>
     </div>
   </div>
-  <script>
-    function showCategory(category) {
-      const all = document.querySelectorAll(".menu-category");
-      all.forEach(c => c.style.display = "none");
 
-      const target = document.querySelector(`[data-category="${category}"]`);
-      if (target) target.style.display = "flex";
+  <script>
+    const cart = {};
+
+    function showCategory(category) {
+      const allSections = document.querySelectorAll(".menu-category");
+      allSections.forEach(section => section.style.display = "none");
+
+      const current = document.querySelector(`.menu-category[data-category="${category}"]`);
+      if (current) current.style.display = "flex";
+
+      const tabButtons = document.querySelectorAll("#tabs button");
+      tabButtons.forEach(btn => {
+        btn.classList.remove("active");
+        if (btn.dataset.category === category) {
+          btn.classList.add("active");
+        }
+      });
     }
 
-    // 페이지 처음 들어오면 버거 메뉴 먼저 보이게
+    function updateCartUI() {
+      const cartDiv = document.getElementById("cart");
+      cartDiv.innerHTML = "";
+      let total = 0;
+
+      Object.keys(cart).forEach(name => {
+        const { price, quantity } = cart[name];
+        total += price * quantity;
+
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "cart-item";
+        itemDiv.innerHTML = `
+          <div class="cart-info">
+            <strong>${name}</strong><br>${price.toLocaleString()}원 × ${quantity}
+          </div>
+          <div class="controls">
+            <button onclick="changeQty('${name}', -1)">-</button>
+            <button onclick="changeQty('${name}', 1)">+</button>
+            <button onclick="removeItem('${name}')">삭제</button>
+          </div>`;
+        cartDiv.appendChild(itemDiv);
+      });
+
+      document.getElementById("total").textContent = total.toLocaleString();
+    }
+
+    function changeQty(name, diff) {
+      if (cart[name]) {
+        cart[name].quantity += diff;
+        if (cart[name].quantity <= 0) delete cart[name];
+        updateCartUI();
+      }
+    }
+
+    function removeItem(name) {
+      delete cart[name];
+      updateCartUI();
+    }
+
+    function clearCart() {
+      for (let key in cart) delete cart[key];
+      updateCartUI();
+    }
+
+    function showModal() {
+      document.getElementById("modal").classList.remove("hidden");
+    }
+
+    function hideModal() {
+      document.getElementById("modal").classList.add("hidden");
+    }
+
     window.onload = () => {
-      showCategory('burger');
+      showCategory("burger");
+
+      const tabButtons = document.querySelectorAll("#tabs button");
+      tabButtons.forEach(btn => {
+        const category = btn.dataset.category;
+        btn.addEventListener("click", () => showCategory(category));
+      });
+
+      const menuButtons = document.querySelectorAll(".menu-button");
+      menuButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const name = btn.dataset.name;
+          const price = parseInt(btn.dataset.price);
+          if (!cart[name]) {
+            cart[name] = { price, quantity: 1 };
+          } else {
+            cart[name].quantity++;
+          }
+          updateCartUI();
+        });
+      });
+
+      document.getElementById("clearCart").addEventListener("click", clearCart);
+      document.getElementById("checkout").addEventListener("click", () => {
+        if (Object.keys(cart).length === 0) {
+          alert("장바구니가 비어 있어요!");
+          return;
+        }
+        showModal();
+        clearCart();
+      });
+      document.getElementById("closeModal").addEventListener("click", hideModal);
     };
   </script>
-  <script src="../js/kiosk.js"></script>
 </body>
-
 </html>
