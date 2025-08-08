@@ -134,25 +134,6 @@ document.getElementById("checkout").addEventListener("click", () => {
   }, 2000);
 });
 
-function showCategory(category) {
-  document.querySelectorAll("#tabs button").forEach(btn => {
-    btn.classList.remove("active");
-  });
-
-  const categoryButton = Array.from(document.querySelectorAll("#tabs button"))
-    .find(btn => btn.textContent.includes(category));
-
-  if (categoryButton) {
-    categoryButton.classList.add("active");
-  }
-
-  const all = document.querySelectorAll(".menu-category");
-  all.forEach(c => c.style.display = "none");
-
-  const target = document.querySelector(`[data-category="${category}"]`);
-  if (target) target.style.display = "flex";
-}
-
 menu.addEventListener("click", (event) => {
   const button = event.target.closest("button");
   console.log("클릭된 요소:", button, "클래스 있나요?", button?.classList.contains("menu-button"));
