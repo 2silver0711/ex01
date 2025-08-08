@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🧾 주문서</title>
+    <style>
+        body {
+            font-family: sans-serif;
+
+            padding: 20px;
+            text-align: center;
+            /* 배경 이미지 추가 */
+            background-image: url('https://mblogthumb-phinf.pstatic.net/MjAyMDEwMjNfMjM0/MDAxNjAzMzg1MDcyODUy.tScVijNCLB1I-tXBK2UmC8YF-VNSTwk4J94v5B0c16Eg.SPReVeQfV7kAv88rME19UgYZrrKHXmBxx6zWgXG5k-wg.GIF.ckzkslkkk/IMG_4661.GIF?type=w800');
+            background-size: cover;
+            /* 화면 전체에 꽉 차게 */
+            background-repeat: no-repeat;
+            /* 이미지 반복 방지 */
+            background-position: center;
+            /* 중앙 정렬 */
+        }
+
+        .receipt {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 30px;
+            border: 1px dashed #9c9c9c;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.65);
+            /* 투명도 0.65(65%) 추천 */
+        }
+
+        .item {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        #order-number {
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="receipt">
+        <h1>🧾 주문서 </h1>
+        <p>주문번호: <span id="order-number"></span></p>
+        <div id="order-list"></div>
+        <p><strong>총 합계:</strong> <span id="order-total">0</span>원</p>
+        <button onclick="goHome()">처음으로</button>
+    </div>
+
+    <script>
+        // 주문 정보 불러오기
+        const cart = JSON.parse(localStorage.getItem("order"));
+        const orderList = document.getElementById("order-list");
+        const orderTotal = document.getElementById("order-total");
+        const orderNumber = document.getElementById("order-number");
+
+        let total = 0;
+
+        if (cart) {
+            for (const name in cart) {
+                const { price, count } = cart[name];
+                const itemTotal = price * count;
+                total += itemTotal;
+
+                const div = document.createElement("div");
+                div.className = "item";
+                div.textContent = `${name} x${count}개 - ${itemTotal.toLocaleString()}원`;
+                orderList.appendChild(div);
+            }
+        }
+
+        // 랜덤 주문번호 생성 (예: ORD123456)
+        orderNumber.textContent = "ORD" + Math.floor(100000 + Math.random() * 900000);
+
+        orderTotal.textContent = total.toLocaleString();
+
+        // 다시 홈으로 가기
+        function goHome() {
+            localStorage.removeItem("order");
+            location.href = "/ex01/html/kiosk.html";
+        }
+    </script>
+</body>
+
+</html>
