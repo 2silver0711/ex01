@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Whiskey Counter</title>
+<style>
+/* ===== 변수 / 공통 ===== */
+:root {
+  --primary: #030213;
+  --primary-foreground: #ffffff;
+  --secondary: #d6d6e6;
+  --secondary-foreground: #030213;
+  --card: #1e1e1e;
+  --card-foreground: #ffffff;
+  --accent: #e9ebef;
+  --accent-foreground: #030213;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255,255,255,0.1);
+  --radius: 0.625rem;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+  --amber-600: #d97706;
+  --zinc-700: #3f3f46;
+  --zinc-800: #27272a;
+  --zinc-900: #18181b;
+}
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: linear-gradient(to bottom right, var(--zinc-900), #0f172a, #000);
+  color: white;
+}
+.container {
+  max-width: 1280px;
+  margin: auto;
+  padding: 1.5rem;
+}
+
+/* 헤더: 이모지와 타이틀 가로배치 */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+.header-emoji {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+.header-title-group {
+  display: flex;
+  flex-direction: column;
+}
+.header-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.header-subtitle {
+  font-size: 0.875rem;
+  color: var(--amber-400);
+  font-weight: 400;
+  margin-top: 0.15rem;
+}
+
+/* 버튼 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+.btn-default {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+.btn-default:hover {
+  background: color-mix(in srgb, var(--primary), white 10%);
+}
+.btn-outline {
+  border: 1px solid var(--border);
+  background: var(--zinc-800);
+  color: white;
+}
+.btn-sm {
+  height: 2rem;
+  padding: 0 0.5rem;
+}
+.btn-lg {
+  height: 2.5rem;
+  padding: 0 1rem;
+  font-size: 1rem;
+}
+/* 삭제 버튼은 투명 배경에 흰색 텍스트, 테두리 붉은색 */
+.btn-destructive {
+  background: transparent;
+  color: white;
+  border: 1px solid var(--destructive);
+  transition: background 0.2s, color 0.2s;
+}
+.btn-destructive:hover {
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+/* 카드 */
+.card {
+  background: var(--card);
+  color: var(--card-foreground);
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+.card-image-wrap {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+  display: block;
+}
+.card:hover .card-image-wrap img {
+  transform: scale(1.08);
+}
+.card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  pointer-events: none;
+}
+.card-header {
+  padding: 1rem 1.5rem 0;
+}
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+.card-content {
+  padding: 0 1.5rem;
+}
+.card-footer {
+  padding: 0 1.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* 총 금액 영역 아래로 여백 추가 */
+.card-footer.total {
+  justify-content: space-between;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+/* 기타 */
+.scroll-area {
+  max-height: 320px;
+  overflow-y: auto;
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: var(--zinc-900);
+  padding: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--zinc-700);
+  max-width: 400px;
+  width: 100%;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  outline: 1px solid rgba(251,191,36,0.6); /* 은은하고 얇게 */
+  outline-offset: 2px;
+}
+</style>
+</head>
+<body>
+
+<header class="container">
+  <div class="header-emoji" aria-hidden="true">🥃</div>
+  <div class="header-title-group">
+    <h1 class="header-title">The Whiskey Counter</h1>
+    <div class="header-subtitle">Premium Whiskey Experience</div>
+  </div>
+</header>
+
+<main class="container">
+  <!-- 장바구니 -->
+  <section class="card" id="order-cart">
+    <div class="card-header"><div class="card-title">주문 내역 <span id="total-items-badge"></span></div></div>
+    <div class="card-content scroll-area" id="cart-items"></div>
+    <div class="card-footer total"><span>총 금액</span><strong id="total-price"></strong></div>
+    <div class="card-footer"><button id="complete-order-btn" class="btn btn-default btn-lg" style="width:100%;">주문 완료</button></div>
+  </section>
+
+  <!-- 카테고리 -->
+  <section style="margin-top:2rem;">
+    <h2>위스키 컬렉션</h2>
+    <div id="category-filter" style="display:flex; gap:0.5rem; overflow-x:auto; padding-bottom:0.5rem;"></div>
+  </section>
+
+  <!-- 메뉴 -->
+  <section id="whiskey-menu" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1rem; margin-top:1rem;"></section>
+</main>
+
+<!-- 주문완료 모달 -->
+<div id="order-complete-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="order-complete-title">
+  <div class="modal-content">
+    <h3 id="order-complete-title">주문이 완료되었습니다!</h3>
+    <p>주문 번호: <span id="order-number"></span></p>
+    <div id="completed-items" style="margin-top:1rem;"></div>
+    <strong id="completed-total" style="display:block; margin-top:1rem;"></strong>
+    <button id="close-modal-btn" class="btn btn-default btn-lg" style="width:100%; margin-top:1rem;">새 주문 시작</button>
+  </div>
+</div>
+
+<script>
+const categoryNames = {
+  scotch: "스카치",
+  bourbon: "버번",
+  rye: "호밀",
+  irish: "아이리시",
+  japanese: "일본산",
+  other: "기타"
+};
+
+// 샘플 위스키 데이터 (이미지 포함)
+const whiskeyMenu = [
+  { id: "w1", name: "Glenfiddich 12", category: "scotch", price: 15000, description: "Smooth single malt", abv: 40, region: "Speyside", age: 12, quantity: 1, imageUrl: "https://winesonline.com.sg/cdn/shop/products/Glenfiddich-Personalised-Label_2020_12YO_1200x.jpg?v=1623808863" },
+  { id: "w2", name: "Macallan 18", category: "scotch", price: 45000, description: "Rich & complex", abv: 43, region: "Speyside", age: 18, quantity: 1, imageUrl: "https://preview.redd.it/140th-whisky-review-61st-scotch-whisky-review-macallan-12-v0-tdj2zmlns7jd1.jpeg?width=1080&crop=smart&auto=webp&s=4c53d51c76e2f3855ed4119f07deea6d4e0075c5" },
+  { id: "w3", name: "Yamazaki 12", category: "japanese", price: 35000, description: "Elegant Japanese whisky", abv: 43, region: "Japan", age: 12, quantity: 1, imageUrl: "https://www.mcf-rarewine.com/cdn/shop/files/the-yamazaki-12yr-100th-anniversary-liquor-whiskey-japan-mcf-rare-wine-41772293259543.jpg?v=1687022718" },
+  { id: "w4", name: "Woodford Reserve", category: "bourbon", price: 18000, description: "Full-bodied bourbon whiskey", abv: 45, region: "USA", age: 8, quantity: 1, imageUrl: "https://preview.redd.it/review-the-woodford-reserve-double-double-oaked-v0-ng34bseepvae1.jpeg?width=1080&crop=smart&auto=webp&s=59a6856e7094a87632b8924d0f5b3312d1cadf80" },
+  { id: "w5", name: "Jameson Irish Whiskey", category: "irish", price: 16000, description: "Smooth Irish whiskey with hints of vanilla", abv: 40, region: "Ireland", age: 5, quantity: 1, imageUrl: "https://thewhiskeyjug.com/wp-content/uploads/2014/12/Jameson-Irish-Whiskey-750x750.jpg" },
+  { id: "w6", name: "Bulleit Bourbon", category: "bourbon", price: 20000, description: "Spicy and bold bourbon", abv: 45, region: "USA", age: 6, quantity: 1, imageUrl: "https://www.maxim.com/wp-content/uploads/2021/05/bulleit-bourbon-blenders-select-no.-001-4.jpg" },
+  { id: "w7", name: "Bushmills Original", category: "irish", price: 14000, description: "Triple-distilled Irish whiskey", abv: 40, region: "Ireland", age: 7, quantity: 1, imageUrl: "https://bushmills.com/cdn/shop/files/bushmills-whiskey-black-bush-lifestyle-3.png?v=1740672374&width=1445" }
+];
+
+let orderItems = [];
+let selectedCategory = "all";
+
+const formatPrice = p => `₩${p.toLocaleString()}`;
+
+function renderCart() {
+  const cart = document.getElementById("cart-items");
+  const total = orderItems.reduce((sum, i) => sum + i.price * i.quantity, 0);
+  const totalItems = orderItems.reduce((sum, i) => sum + i.quantity, 0);
+  document.getElementById("total-items-badge").textContent = totalItems ? `(${totalItems}개)` : "";
+  document.getElementById("total-price").textContent = formatPrice(total);
+  if (!orderItems.length) {
+    cart.innerHTML = "<p style='color:gray;text-align:center;'>주문할 위스키를 선택해주세요</p>";
+    return;
+  }
+  cart.innerHTML = orderItems.map(item => `
+    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding:0.5rem 0;">
+      <div><strong>${item.name}</strong><br><small>${formatPrice(item.price)} × ${item.quantity}</small></div>
+      <div>
+        <button class="btn btn-outline btn-sm" onclick="updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
+        <button class="btn btn-outline btn-sm" onclick="updateQuantity('${item.id}', ${item.quantity + 1})">+</button>
+        <button class="btn btn-destructive btn-sm" onclick="removeItem('${item.id}')">🗑</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderMenu() {
+  const menu = document.getElementById("whiskey-menu");
+  const filtered = selectedCategory === "all" ? whiskeyMenu : whiskeyMenu.filter(w => w.category === selectedCategory);
+  menu.innerHTML = filtered.map(w => `
+    <div class="card">
+      <div class="card-image-wrap">
+        <img src="${w.imageUrl}" alt="${w.name}">
+        <div class="card-image-overlay"></div>
+      </div>
+      <div class="card-header"><div class="card-title">${w.name}</div></div>
+      <div class="card-content">
+        <p>${w.description}</p>
+        <small>${w.region || ""} ${w.age ? `${w.age}년` : ""}</small>
+      </div>
+      <div class="card-footer">
+        <span>${formatPrice(w.price)}</span>
+        <button class="btn btn-default btn-sm" onclick='addToOrder(${JSON.stringify(w)})'>추가</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderCategories() {
+  const catDiv = document.getElementById("category-filter");
+  const categories = ["all", ...Object.keys(categoryNames)];
+  catDiv.innerHTML = categories.map(cat => `
+    <button class="${selectedCategory === cat ? 'btn btn-default btn-sm' : 'btn btn-outline btn-sm'}" onclick="selectCategory('${cat}')">
+      ${cat === 'all' ? '전체' : categoryNames[cat]} (${getCategoryCount(cat)})
+    </button>
+  `).join("");
+}
+
+function getCategoryCount(cat) {
+  return cat === "all" ? whiskeyMenu.length : whiskeyMenu.filter(w => w.category === cat).length;
+}
+
+function addToOrder(w) {
+  const existing = orderItems.find(i => i.id === w.id);
+  if (existing) existing.quantity++;
+  else orderItems.push({ ...w });
+  renderCart();
+}
+
+function updateQuantity(id, qty) {
+  if (qty <= 0) removeItem(id);
+  else orderItems = orderItems.map(i => i.id === id ? { ...i, quantity: qty } : i);
+  renderCart();
+}
+
+function removeItem(id) {
+  orderItems = orderItems.filter(i => i.id !== id);
+  renderCart();
+}
+
+document.getElementById("complete-order-btn").addEventListener("click", () => {
+  if (!orderItems.length) return;
+  const orderNumber = String(Date.now()).slice(-6);
+  document.getElementById("order-number").textContent = orderNumber;
+  document.getElementById("completed-items").innerHTML = orderItems.map(i => `<div>${i.name} × ${i.quantity}</div>`).join("");
+  document.getElementById("completed-total").textContent = formatPrice(orderItems.reduce((s, i) => s + i.price * i.quantity, 0));
+  document.getElementById("order-complete-modal").style.display = "flex";
+});
+
+document.getElementById("close-modal-btn").addEventListener("click", () => {
+  orderItems = [];
+  renderCart();
+  document.getElementById("order-complete-modal").style.display = "none";
+});
+
+function selectCategory(cat) {
+  selectedCategory = cat;
+  renderCategories();
+  renderMenu();
+}
+
+// 초기 렌더링
+renderCategories();
+renderMenu();
+renderCart();
+</script>
+</body>
+</html>
