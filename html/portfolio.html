@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박이은 - UX/UI Designer Portfolio</title>
+    <link rel="stylesheet" href="/ex01/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="portfolio-body">
+    <!-- Navigation -->
+    <nav id="navigation" class="navigation">
+        <div class="nav-container">
+            <div class="nav-content">
+                <!-- Logo -->
+                <button onclick="showPage('home')" class="nav-logo">
+                    <div class="nav-logo-icon">PE</div>
+                    <div class="nav-logo-text">
+                        <div class="nav-logo-name">Park Lee Eun</div>
+                        <div class="nav-logo-title">UX/UI Designer</div>
+                    </div>
+                </button>
+
+                <!-- Navigation Links -->
+                <div class="nav-links">
+                    <button onclick="showPage('about')" class="nav-link" data-page="about">About me</button>
+                    <button onclick="showPage('portfolio')" class="nav-link" data-page="portfolio">Work</button>
+                    <button onclick="showPage('resume')" class="nav-link" data-page="resume">Resume</button>
+                    <button onclick="showPage('contact')" class="nav-link" data-page="contact">Contact</button>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="nav-cta">
+                    <button onclick="showPage('contact')" class="nav-cta-button">Let's Work Together</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="hero-grid">
+                    <!-- Left Content -->
+                    <div class="hero-content">
+                        <div class="hero-skills">
+                            <span class="skill-tag">#UI/UX_Design</span>
+                            <span class="skill-tag">#User_Research</span>
+                            <span class="skill-tag">#Prototyping</span>
+                            <span class="skill-tag">#Design_Systems</span>
+                            <span class="skill-tag">#Product_Design</span>
+                            <span class="skill-tag">#Modeling</span>
+                        </div>
+                        
+                        <div class="hero-text">
+                            <h1 class="hero-title">PORTFOLIO</h1>
+                            <div class="hero-name">
+                                <div class="hero-name-ko">박이은</div>
+                                <div class="hero-name-en">Park Lee Eun</div>
+                            </div>
+                            <p class="hero-description">
+                                사용자 중심의 디자인을 통해 의미 있는 제품/서비스 경험을 만들어가는 UX/UI 디자이너입니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right Content - Profile Image -->
+                    <div class="hero-image-container">
+                        <div class="hero-image-wrapper">
+                            <div class="hero-image">
+                                <div class="hero-image-placeholder">
+                                    <div class="placeholder-icon">👤</div>
+                                    <p class="placeholder-text">Profile Photo</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Floating elements -->
+                            <div class="floating-element floating-sparkle">
+                                <div class="floating-sparkle-icon">✨</div>
+                            </div>
+                            
+                            <div class="floating-element floating-status">
+                                <div class="status-indicator"></div>
+                                <span class="status-text">Available for work</span>
+                            </div>
+                            
+                            <div class="floating-element floating-experience">
+                                <div class="experience-number">1+</div>
+                                <div class="experience-text">Years</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Grid Section -->
+        <section class="portfolio-grid-section">
+            <div class="portfolio-container">
+                <h2 class="section-title">Recent Projects</h2>
+                
+                <div class="project-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card" onclick="showProjectDetail('healthcare-app')">
+                        <div class="project-image">
+                            <img src="/ex01/image/비핸스 썸네일.jpg" alt="헬스케어 모바일 앱">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-category">Locallink App</span>
+                                <span class="project-year">2024</span>
+                            </div>
+                            <h3 class="project-title">로컬링크</h3>
+                            <p class="project-description">현지인과 함께하는 소외 지역의 여행 코스 정보제공 서비스</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Mobile</span>
+                                <span class="project-tag">Local Travel</span>
+                                <span class="project-tag">UI/UX</span>
+                            </div>
+                            <div class="project-link">
+                                <span>자세히 보기</span>
+                                <svg class="project-link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card" onclick="showProjectDetail('dashboard')">
+                        <div class="project-image">
+                            <img src="/ex01/image/썸네일.jpg" alt="기업용 대시보드">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-category">Design system</span>
+                                <span class="project-year">2025</span>
+                            </div>
+                            <h3 class="project-title">카카오T 퀵/배송 디자인시스템</h3>
+                            <p class="project-description">카카오T의 퀵/배송 서비스의 디자인시스템 구축</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Token</span>
+                                <span class="project-tag">Component</span>
+                                <span class="project-tag">Colors</span>
+                            </div>
+                            <div class="project-link">
+                                <span>자세히 보기</span>
+                                <svg class="project-link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card" onclick="showProjectDetail('ecommerce')">
+                        <div class="project-image">
+                            <img src="/ex01/image/비핸스 썸네일2.jpg" alt="이커머스 플랫폼">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-category">Product</span>
+                                <span class="project-year">2024</span>
+                            </div>
+                            <h3 class="project-title">제품디자인</h3>
+                            <p class="project-description">Z Flip 사용자에게 새로운 경험을 제공하는 무선충전기 디자인</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Charger</span>
+                                <span class="project-tag">Product Design</span>
+                                <span class="project-tag">Samsung</span>
+                            </div>
+                            <div class="project-link">
+                                <span>자세히 보기</span>
+                                <svg class="project-link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Project Detail Pages -->
+    <div id="project-detail-page" class="page hidden-page">
+        <div class="project-detail-container">
+            <!-- Back Button -->
+            <div class="project-detail-header">
+                <button onclick="backToPortfolio()" class="back-button">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <div class="project-detail-category" id="detail-category">Mobile App</div>
+            </div>
+
+            <!-- Project Title -->
+            <div class="project-detail-title-section">
+                <h1 class="project-detail-title" id="detail-title">Locallink App</h1>
+                <p class="project-detail-subtitle" id="detail-subtitle">현지인과 함께하는 소외 지역의 여행 코스 정보제공 서비스</p>
+            </div>
+
+            <!-- Project Info Grid -->
+            <div class="project-info-grid">
+                <div class="project-info-card">
+                    <h3>Year</h3>
+                    <p id="detail-year">2024</p>
+                </div>
+                <div class="project-info-card">
+                    <h3>Duration</h3>
+                    <p id="detail-duration">8개월</p>
+                </div>
+                <div class="project-info-card">
+                    <h3>Role</h3>
+                    <p id="detail-role">Lead UX/UI Designer</p>
+                </div>
+                <div class="project-info-card">
+                    <h3>Team</h3>
+                    <p id="detail-team">디자이너 4명, 기획 4명</p>
+                </div>
+            </div>
+
+            <!-- Image Gallery -->
+            <div class="project-gallery">
+                <div class="gallery-main-image">
+                    <img id="main-gallery-image" src="/ex01/image/02_로컬링크_비핸스.jpg" alt="Project Image">
+                </div>
+                <div class="gallery-thumbnails" id="gallery-thumbnails">
+                    <!-- Thumbnails will be populated by JavaScript -->
+                </div>
+                <p class="gallery-caption" id="gallery-caption">메인 대시보드 및 핵심 기능 화면</p>
+            </div>
+
+            <!-- Project Details Grid -->
+            <div class="project-details-grid">
+                <div class="project-details-left">
+                    <div class="project-detail-section">
+                        <h2>Challenge</h2>
+                        <p id="detail-challenge">복잡한 건강 데이터를 사용자가 쉽게 이해하고 관리할 수 있도록 하는 것이 주요 과제였습니다.</p>
+                    </div>
+                    
+                    <div class="project-detail-section">
+                        <h2>Solution</h2>
+                        <p id="detail-solution">사용자 리서치를 통해 주요 페인 포인트를 파악하고, 정보 계층을 단순화했습니다.</p>
+                    </div>
+                </div>
+
+                <div class="project-details-right">
+                    <div class="project-detail-section">
+                        <h2>Result</h2>
+                        <p id="detail-result">사용자 테스트 결과 태스크 완료율이 85%에서 96%로 향상되었습니다.</p>
+                    </div>
+
+                    <div class="project-detail-section">
+                        <h2>Tools Used</h2>
+                        <div class="project-tools" id="detail-tools">
+                            <!-- Tools will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="project-actions">
+                <a href="#" id="live-demo-btn" class="project-action-btn primary">Live Demo 보기</a>
+                <a href="#" id="prototype-btn" class="project-action-btn secondary">Figma 프로토타입</a>
+                <a href="#" id="pdf-btn" class="project-action-btn tertiary">Case Study PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Page -->
+    <div id="portfolio-page" class="page hidden-page">
+        <div class="portfolio-page-container">
+            <div class="portfolio-page-header">
+                <h1>Portfolio</h1>
+                <p>다양한 프로젝트를 통해 축적한 경험과 노하우를 바탕으로 사용자 중심의 디자인 솔루션을 제공합니다.</p>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <div class="filter-tab active">All</div>
+                <div class="filter-tab">Mobile App</div>
+                <div class="filter-tab">Web Platform</div>
+                <div class="filter-tab">E-commerce</div>
+                <div class="filter-tab">Branding</div>
+            </div>
+
+            <!-- Project Grid -->
+            <div class="portfolio-page-grid">
+                <!-- Projects will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about-page" class="page hidden-page">
+        <div class="about-container">
+            <div class="about-header">
+                <h1>About Me</h1>
+                <p>사용자 중심의 디자인을 통해 의미 있는 디지털 경험을 만들어가는 UX/UI 디자이너입니다.</p>
+            </div>
+            <!-- About content will be here -->
+        </div>
+    </div>
+
+    <!-- Resume Page -->
+    <div id="resume-page" class="page hidden-page">
+        <div class="resume-container">
+            <div class="resume-header">
+                <h1>Resume</h1>
+                <p>3년 이상의 UX/UI 디자인 경험을 바탕으로 사용자 중심의 디지털 경험을 설계하고 구현합니다.</p>
+            </div>
+            <!-- Resume content will be here -->
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="page hidden-page">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h1>Get In Touch</h1>
+                <p>새로운 프로젝트나 협업 기회에 대해 이야기하고 싶으시다면 언제든 연락해 주세요.</p>
+            </div>
+            <!-- Contact content will be here -->
+        </div>
+    </div>
+
+    <script src="/ex01/js/script.js"></script>
+</body>
+</html>
