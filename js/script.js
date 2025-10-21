@@ -5,7 +5,7 @@ let currentProject = null;
 // Project Data
 const projectsData = {
     'Locallink-app': {
-        id: 'Locallink app',
+        id: 'Locallink-app',
         title: '현지인 코스 모바일 앱',
         subtitle: '사용자의 현지인과 함께하는 소외 지역의 여행 코스 정보제공 서비스건강 관리를 위한 종합 솔루션',
         category: 'Mobile App',
@@ -35,7 +35,7 @@ const projectsData = {
         prototypeUrl: 'https://cloud.protopie.io/p/c167fabdc95f35146e96a8ad',
         pdfUrl: 'https://acrobat.adobe.com/id/urn:aaid:sc:ap:57258823-4f9d-44b0-9759-05b314880d23'
     },
-    'design system': {
+    'design-system': {
         id: 'kakaoT',
         title: '디자인시스템',
         subtitle: '카카오T 퀵/배송 디자인시스템',
