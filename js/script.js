@@ -4,10 +4,10 @@ let currentProject = null;
 
 // Project Data
 const projectsData = {
-    'healthcare-app': {
-        id: 'healthcare-app',
-        title: '헬스케어 모바일 앱',
-        subtitle: '사용자의 건강 관리를 위한 종합 솔루션',
+    'Locallink-app': {
+        id: 'Locallink app',
+        title: '현지인 코스 모바일 앱',
+        subtitle: '사용자의 현지인과 함께하는 소외 지역의 여행 코스 정보제공 서비스건강 관리를 위한 종합 솔루션',
         category: 'Mobile App',
         year: '2024',
         duration: '8개월',
@@ -24,26 +24,26 @@ const projectsData = {
             },
             {
                 url: 'https://i.pinimg.com/1200x/53/bb/0b/53bb0ba2036a4f5d25f091a567a1360a.jpg',
-                caption: '건강 데이터 시각화 인터페이스'
+                caption: '현지인 코스 시각화 인터페이스'
             },
             {
                 url: 'https://i.pinimg.com/1200x/53/bb/0b/53bb0ba2036a4f5d25f091a567a1360a.jpg',
                 caption: '사용자 여정 및 와이어프레임'
             }
         ],
-        liveUrl: 'https://healthapp-demo.vercel.app',
-        prototypeUrl: 'https://www.figma.com/proto/healthcare-app',
-        pdfUrl: 'https://drive.google.com/file/d/healthcare-app-casestudy.pdf'
+        prototypeUrl: 'https://healthapp-demo.vercel.apphttps://cloud.protopie.io/p/8c8dd821bae471e1304a8086',
+        prototypeUrl: 'https://cloud.protopie.io/p/c167fabdc95f35146e96a8ad',
+        pdfUrl: 'https://acrobat.adobe.com/id/urn:aaid:sc:ap:57258823-4f9d-44b0-9759-05b314880d23'
     },
-    'dashboard': {
-        id: 'dashboard',
-        title: '기업용 대시보드',
-        subtitle: 'B2B 데이터 시각화 플랫폼',
-        category: 'Web Platform',
-        year: '2024',
-        duration: '4개월',
+    'design system': {
+        id: 'kakaoT',
+        title: '디자인시스템',
+        subtitle: '카카오T 퀵/배송 디자인시스템',
+        category: 'Mobile App',
+        year: '2025',
+        duration: '1개월',
         role: 'Senior UX/UI Designer',
-        team: '디자이너 3명, 개발자 5명, 데이터 분석가 2명',
+        team: '디자이너 4명',
         tools: ['Figma', 'Sketch', 'D3.js', 'Hotjar'],
         challenge: '복잡한 기업 데이터를 효과적으로 시각화하고, 다양한 사용자 권한에 따른 정보 접근성을 구현하는 것이 주요 과제였습니다.',
         solution: '모듈형 대시보드 구조를 설계하여 사용자가 필요한 정보만 선택적으로 볼 수 있도록 했습니다. 또한 권한별 정보 필터링 시스템을 구축했습니다.',
@@ -59,18 +59,18 @@ const projectsData = {
             }
         ],
         liveUrl: 'https://dashboard-demo.vercel.app',
-        prototypeUrl: 'https://www.figma.com/proto/dashboard',
+        prototypeUrl: 'https://www.figma.com/proto/bhdwcNkc4FWMLOFUulnNuh/%EB%94%94%EC%9E%90%EC%9D%B8-%EC%8B%9C%EC%8A%A4%ED%85%9C---%ED%86%A0%EA%B8%80%ED%86%A0%EA%B8%80?node-id=1378-2&t=RphQBwkjUeH1JPeJ-1ttps://www.figma.com/proto/dashboard',
         pdfUrl: 'https://drive.google.com/file/d/dashboard-casestudy.pdf'
     },
-    'ecommerce': {
-        id: 'ecommerce',
-        title: '이커머스 플랫폼',
-        subtitle: '온라인 쇼핑 경험 혁신',
-        category: 'E-commerce',
-        year: '2023',
+    'product': {
+        id: 'product',
+        title: '제품디자인',
+        subtitle: '보조배터리 디자인',
+        category: 'product',
+        year: '2024',
         duration: '5개월',
-        role: 'UX/UI Designer',
-        team: '디자이너 2명, 개발자 4명, 마케터 2명',
+        role: 'Product, UX/UI Designer',
+        team: '디자이너 1명',
         tools: ['Figma', 'Adobe XD', 'Optimizely', 'Google Analytics'],
         challenge: '높은 카트 이탈률과 복잡한 결제 프로세스로 인한 컨버전율 저하가 주요 문제였습니다.',
         solution: '단계별 결제 프로세스를 재설계하고, 개인화된 상품 추천 시스템과 원클릭 결제 옵션을 도입했습니다.',
@@ -86,7 +86,7 @@ const projectsData = {
             }
         ],
         liveUrl: 'https://ecommerce-demo.vercel.app',
-        prototypeUrl: 'https://www.figma.com/proto/ecommerce',
+        prototypeUrl: 'https://www.figma.com/proto/MT5f2J8xfvirnsSyIZlT3B/%EB%A9%94%EC%9D%B4%ED%82%B9%EC%84%BC%EC%8A%A4-%EB%94%94%EC%9E%90%EC%9D%B8?node-id=2018-22&viewport=-97%2C4231%2C0.09&t=vyBhNgfjnUBdJ4Gm-0&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2018%3A22https://www.figma.com/proto/ecommerce',
         pdfUrl: 'https://drive.google.com/file/d/ecommerce-casestudy.pdf'
     }
 };
